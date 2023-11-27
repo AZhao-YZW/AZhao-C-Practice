@@ -12,3 +12,6 @@
 | `tools` | 下为音乐盒项目的开发版本、维修工具。|
 | `tools/dev_tool` | 是开发人员的调试版本，能够使用`project/musicbox`所有接口，包括一些底层接口。|
 | `tools/fix_tool` | 是维修人员的维修版本，能够使用`project/musicbox`的维修接口。|
+
+## 参考资料
+1. [Makefile自动搜所目录及子目录下的的所有文件、自动生成编译目录](https://blog.csdn.net/songshuai0223/article/details/124676839)
