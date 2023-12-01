@@ -15,3 +15,6 @@
 
 ## 参考资料
 1. [Makefile自动搜所目录及子目录下的的所有文件、自动生成编译目录](https://blog.csdn.net/songshuai0223/article/details/124676839)
+2. 由于windows下make工具使用时会出现权限不足情况，所以将项目放在linux虚拟机上运行
+   + [001.企业级CentOS7.6操作系统的安装](https://cloud.tencent.com/developer/article/1604773)
+   + [在VMware Workstation中安装完CentOS-7.6-Minimal版后的常用配置](https://cloud.tencent.com/developer/article/1423893)
