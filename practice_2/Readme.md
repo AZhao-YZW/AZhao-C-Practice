@@ -18,3 +18,11 @@
 2. 由于windows下make工具使用时会出现权限不足情况，所以将项目放在linux虚拟机上运行
    + [001.企业级CentOS7.6操作系统的安装](https://cloud.tencent.com/developer/article/1604773)
    + [在VMware Workstation中安装完CentOS-7.6-Minimal版后的常用配置](https://cloud.tencent.com/developer/article/1423893)
+   + [VMware NAT模式下设置网络，虚拟机和主机网络不通](https://blog.csdn.net/YiRan_Zhao/article/details/110121526)
+   + [Linux终端打开后命令行显示sh-4.2$的一个解决方法](https://blog.csdn.net/CC5683CC/article/details/106926721)
+   + [关于Centos使用wget下载: 无法解析主机地址问题](https://blog.csdn.net/qq_42938040/article/details/109694358)
+   + [Vim_上下两行交换位置](https://blog.csdn.net/mikyz/article/details/69398093)
+   + [centos7安装python3.11完整教程（完整有效）](https://zhuanlan.zhihu.com/p/590965831)
+   + [centos7 安装python3并设为默认](https://blog.csdn.net/misaka_s/article/details/89509859)
+   + [CentOS7 升级 Git (最新方法,秒杀一切旧方法!)](https://blog.csdn.net/hxj0323/article/details/119751427)
+   + [Centos7升级Python2到Python3](https://cloud.tencent.com/developer/article/1884182)
