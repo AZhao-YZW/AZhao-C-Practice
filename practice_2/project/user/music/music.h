@@ -1,12 +1,16 @@
 #ifndef _MUSIC_H
 #define _MUSIC_H
 
-void music_start(void);
-void music_stop(void);
-void music_restart(void);
-void music_front(void);
-void music_next(void);
-void music_volume_up(void);
-void music_volume_down(void);
+enum e_music_opcode {
+    MUSIC_START = 0,
+    MUSIC_STOP,
+    MUSIC_RESTART,
+    MUSIC_FRONT,
+    MUSIC_NEXT,
+    MUSIC_VOLUME_UP,
+    MUSIC_VOLUME_DOWN,
+};
+
+void music_option(unsigned int opcode);
 
 #endif

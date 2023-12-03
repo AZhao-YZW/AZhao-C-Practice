@@ -4,9 +4,12 @@ SOURCES := $(foreach dir, $(SRC_PATH), $(wildcard $(dir)/*.c))
 OUTPUT_PATH := ../bin
 OUTPUT_BIN_NAME := user_tool
 
+CC := gcc
+CFLAG := -Wall
+
 all:
 	mkdir -p $(OUTPUT_PATH)
-	gcc -I $(INC_PATH) -o $(OUTPUT_PATH)/$(OUTPUT_BIN_NAME)
+	$(CC) $(CFLAG) $(addprefix -I,$(INC_PATH)) $(SOURCES) -o $(OUTPUT_PATH)/$(OUTPUT_BIN_NAME)
 
 clean:
 	rm -rf $(OUTPUT_PATH)

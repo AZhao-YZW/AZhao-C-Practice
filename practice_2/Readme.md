@@ -11,7 +11,7 @@
 | `project/user` | 实现对`project/musicbox`提供功能的封装，是最终呈现给用户的产品。|
 | `tools` | 下为音乐盒项目的开发版本、维修工具。|
 | `tools/dev_tool` | 是开发人员的调试版本，能够使用`project/musicbox`所有接口，包括一些底层接口。|
-| `tools/fix_tool` | 是维修人员的维修版本，能够使用`project/musicbox`的维修接口。|
+| `tools/repair_tool` | 是维修人员的维修版本，能够使用`project/musicbox`的维修接口。|
 
 ## 参考资料
 1. [Makefile自动搜所目录及子目录下的的所有文件、自动生成编译目录](https://blog.csdn.net/songshuai0223/article/details/124676839)
@@ -26,3 +26,6 @@
    + [centos7 安装python3并设为默认](https://blog.csdn.net/misaka_s/article/details/89509859)
    + [CentOS7 升级 Git (最新方法,秒杀一切旧方法!)](https://blog.csdn.net/hxj0323/article/details/119751427)
    + [Centos7升级Python2到Python3](https://cloud.tencent.com/developer/article/1884182)
+   + [gcc command in Linux with examples](https://www.geeksforgeeks.org/gcc-command-in-linux-with-examples/)
+   + [GIT 自动补全命令,分支名 以及 高亮显示当前分支](https://www.jianshu.com/p/4f8dc58df31f)
+   + [git rebase，看这一篇就够了](https://juejin.cn/post/6969101234338791432)

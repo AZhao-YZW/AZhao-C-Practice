@@ -1,42 +1,71 @@
+#include "audio_core.h"
 #include <stdio.h>
 
-void audio_start(void)
+static void audio_general_action(char *op)
 {
-    printf("audio_start\n");
+    printf("%s\n", op);
 }
 
-void audio_stop(void)
+static void audio_start(void)
 {
-    printf("audio_stop\n");
+    audio_general_action("audio_start");
 }
 
-void audio_restart(void)
+static void audio_stop(void)
 {
-    printf("audio_restart\n");
+    audio_general_action("audio_stop");
 }
 
-void audio_front(void)
+static void audio_restart(void)
 {
-    printf("audio_front\n");
+    audio_general_action("audio_restart");
 }
 
-void audio_next(void)
+static void audio_front(void)
 {
-    printf("audio_next\n");
+    audio_general_action("audio_front");
 }
 
-void audio_volume_up(void)
+static void audio_next(void)
 {
-    printf("audio_volume_up\n");
+    audio_general_action("audio_next");
 }
 
-void audio_volume_down(void)
+static void audio_volume_up(void)
 {
-    printf("audio_volume_up\n");
+    audio_general_action("audio_volume_up");
+}
+
+static void audio_volume_down(void)
+{
+    audio_general_action("audio_volume_down");
 }
 
 // repair
-void audio_core_repair(void)
+static void audio_core_repair(void)
 {
-    printf("audio_core_repair\n");
+    audio_general_action("audio_core_repair");
+}
+
+typedef void (*audio_option_func)(void);
+
+static audio_option_func g_audio_option_list[] = {
+    audio_start,        // AUDIO_START
+    audio_stop,         // AUDIO_STOP
+    audio_restart,      // AUDIO_RESTART
+    audio_front,        // AUDIO_FRONT
+    audio_next,         // AUDIO_NEXT
+    audio_volume_up,    // AUDIO_VOLUME_UP
+    audio_volume_down,  // AUDIO_VOLUME_DOWN
+    // repair
+    audio_core_repair,  // AUDIO_REPAIR
+};
+
+void audio_option(unsigned int opcode)
+{
+    if (opcode > AUDIO_VOLUME_DOWN) {
+        printf("**error**: audio opcode out of range.\n");
+        return;
+    }
+    g_audio_option_list[opcode]();
 }

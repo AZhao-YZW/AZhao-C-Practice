@@ -1,45 +1,63 @@
+#include "menu.h"
 #include <stdio.h>
 #include "button.h"
 #include "oled.h"
 
-void menu_ok(void)
+static void menu_general_action(char *op, unsigned int btn, char *oled_text)
 {
-    printf("menu_ok\n");
-    button_click(BTN_OK);
-    oled_show_text("ok");
+    printf("%s\n", op);
+    printf("\t\t");
+    button_click(btn);
+    printf("\t\t");
+    oled_show_text(oled_text);
 }
 
-void menu_back(void)
+static void menu_ok(void)
 {
-    printf("menu_back\n");
-    button_click(BTN_BACK);
-    oled_show_text("back");
+    menu_general_action("menu_ok", BTN_OK, "ok");
 }
 
-void menu_up(void)
+static void menu_back(void)
 {
-    printf("menu_up\n");
-    button_click(BTN_UP);
-    oled_show_text("up");
+    menu_general_action("menu_back", BTN_BACK, "back");
 }
 
-void menu_down(void)
+static void menu_up(void)
 {
-    printf("menu_down\n");
-    button_click(BTN_DOWN);
-    oled_show_text("down");
+    menu_general_action("menu_up", BTN_UP, "up");
 }
 
-void menu_left(void)
+static void menu_down(void)
 {
-    printf("menu_left\n");
-    button_click(BTN_LEFT);
-    oled_show_text("left");
+    menu_general_action("menu_down", BTN_DOWN, "down");
 }
 
-void menu_right(void)
+static void menu_left(void)
 {
-    printf("menu_right\n");
-    button_click(BTN_RIGHT);
-    oled_show_text("right");
+    menu_general_action("menu_left", BTN_LEFT, "left");
+}
+
+static void menu_right(void)
+{
+    menu_general_action("menu_right", BTN_RIGHT, "right");
+}
+
+typedef void (*menu_option_func)(void);
+
+static menu_option_func g_menu_option_list[] = {
+    menu_ok,        // MENU_OK
+    menu_back,      // MENU_BACK
+    menu_up,        // MENU_UP
+    menu_down,      // MENU_DOWN
+    menu_left,      // MENU_LEFT
+    menu_right,     // MENU_RIGHT
+};
+
+void menu_option(unsigned int opcode)
+{
+    if (opcode > MENU_RIGHT) {
+        printf("**error**: menu opcode out of range.\n");
+        return;
+    }
+    g_menu_option_list[opcode]();
 }

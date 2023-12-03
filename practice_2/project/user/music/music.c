@@ -1,51 +1,69 @@
+#include "music.h"
 #include <stdio.h>
+#include "menu.h"
 #include "audio_core.h"
 
-void music_start(void)
+static void music_general_action(char *op, unsigned int menu_opcode, unsigned int audio_opcode)
 {
-    printf("music_start\n");
-    menu_ok();
-    audio_start();
+    printf("%s\n", op);
+    printf("\t");
+    menu_option(menu_opcode);
+    printf("\t");
+    audio_option(audio_opcode);
 }
 
-void music_stop(void)
+static void music_start(void)
 {
-    printf("music_stop\n");
-    menu_ok();
-    audio_start();
+    music_general_action("music_start", MENU_OK, AUDIO_START);
 }
 
-void music_restart(void)
+static void music_stop(void)
 {
-    printf("music_restart\n");
-    menu_ok();
-    audio_start();
+    music_general_action("music_stop", MENU_OK, AUDIO_STOP);
 }
 
-void music_front(void)
+static void music_restart(void)
 {
-    printf("music_front\n");
-    menu_left();
-    audio_start();
+    music_general_action("music_restart", MENU_OK, AUDIO_RESTART);
 }
 
-void music_next(void)
+static void music_front(void)
 {
-    printf("music_next\n");
-    menu_right();
-    audio_start();
+    music_general_action("music_front", MENU_LEFT, AUDIO_FRONT);
 }
 
-void music_volume_up(void)
+static void music_next(void)
 {
-    printf("music_volume_up\n");
-    menu_up();
-    audio_start();
+    music_general_action("music_next", MENU_RIGHT, AUDIO_NEXT);
 }
 
-void music_volume_down(void)
+static void music_volume_up(void)
 {
-    printf("music_volume_down\n");
-    menu_down();
-    audio_start();
+    music_general_action("music_volume_up", MENU_UP, AUDIO_VOLUME_UP);
+}
+
+static void music_volume_down(void)
+{
+    music_general_action("music_volume_down", MENU_DOWN, AUDIO_VOLUME_DOWN);
+}
+
+typedef void (*music_option_func)(void);
+
+static music_option_func g_music_option_list[] = {
+    music_start,        // MUSIC_START
+    music_stop,         // MUSIC_STOP
+    music_restart,      // MUSIC_RESTART
+    music_front,        // MUSIC_FRONT
+    music_next,         // MUSIC_NEXT
+    music_volume_up,    // MUSIC_VOLUME_UP
+    music_volume_down,  // MUSIC_VOLUME_DOWN
+};
+
+void music_option(unsigned int opcode)
+{
+    if (opcode > MUSIC_VOLUME_DOWN) {
+        printf("**error**: music opcode out of range.\n");
+        return;
+    }
+    g_music_option_list[opcode]();
 }
