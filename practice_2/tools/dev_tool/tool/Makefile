@@ -8,17 +8,30 @@ OUTPUT_PATH := ../bin
 OUTPUT_BIN_NAME := dev_tool
 
 CC := gcc
-CFLAG := -Wall
+CFLAG := -Wall -MMD
 LDFLAG :=
 
-DEV_TOOL_MOCK_DEFINE := "printf=DEV_PRINT"
-DEV_TOOL_MOCK_FUNC := main
+MOCK_DEFINE := 'DEV_PRINT=printf("%s:%s ", __FILE__, __LINE__); printf'
 
-all:
-	mkdir -p $(OUTPUT_PATH)
-	$(CC) $(CFLAG) $(addprefix -D,$(DEV_TOOL_MOCK_DEFINE)) $(addprefix -I,$(INC_PATH)) $(SOURCES) -o $(OBJS)
-	objcpy $(OBJ_PATH)/dev_tool.o $(DEV_TOOL_MOCK_LIST) $(OBJ_PATH)/dev_tool.o
+DEV_TOOL_MOCK_FUNC := main
+OLED_MOCK_FUNC := oled_show_text oled_show_picture
+AUDIO_CORE_MOCK_FUNC := audio_general_action
+WIFI_MOCK_FUNC := wifi_connect wifi_disconnect
+
+mkdir -p $(OUTPUT_PATH)
+
+.PHONY: compile link clean
+
+compile:
+	$(CC) $(CFLAG) $(addprefix -D,$(MOCK_DEFINE)) $(addprefix -I,$(INC_PATH)) -o $@ $(subst .o,.c,$(notdir $(SOURCES)))
+
+link: $(OBJS)
+	objcpy $(OBJ_PATH)/dev_tool.o $(DEV_TOOL_MOCK_FUNC) $(OBJ_PATH)/dev_tool.o
+	objcpy $(OBJ_PATH)/oled.o $(OLED_MOCK_FUNC) $(OBJ_PATH)/oled.o
+	objcpy $(OBJ_PATH)/audio_core.o $(AUDIO_CORE_MOCK_FUNC) $(OBJ_PATH)/audio_core.o
+	objcpy $(OBJ_PATH)/wifi.o $(WIFI_MOCK_FUNC) $(OBJ_PATH)/wifi.o
 	$(CC) $(LDFLAG) $(OBJS) -o $(OUTPUT_PATH)/$(OUTPUT_BIN_NAME)
 
 clean:
+	rm -rf $(OBJ_PATH)
 	rm -rf $(OUTPUT_PATH)
