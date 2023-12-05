@@ -20,8 +20,6 @@ WIFI_MOCK_FUNC := wifi_connect wifi_disconnect
 
 $(shell mkdir -p $(OUTPUT_PATH))
 
-.PHONY: clean
-
 $(OBJS):
 	$(CC) $(CFLAG) $(addprefix -D,$(MOCK_DEFINE)) $(addprefix -I,$(INC_PATH)) -o $@ $(subst .o,.c,$(notdir $(SOURCES)))
 
@@ -32,6 +30,7 @@ $(OUTPUT_PATH)/$(OUTPUT_BIN_NAME):
 	objcpy $(OBJ_PATH)/wifi.o $(WIFI_MOCK_FUNC) $(OBJ_PATH)/wifi.o
 	$(CC) $(LDFLAG) $(OBJS) -o $(OUTPUT_PATH)/$(OUTPUT_BIN_NAME)
 
+.PHONY: clean
 clean:
 	rm -rf $(OBJ_PATH)
 	rm -rf $(OUTPUT_PATH)
