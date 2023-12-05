@@ -33,3 +33,4 @@
    + [git rebase，看这一篇就够了](https://juejin.cn/post/6969101234338791432)
    + [Git之删除本地无用分支](https://blog.csdn.net/qq_35448165/article/details/107335358)
    + [Linux命令学习手册-objcopy](https://zhuanlan.zhihu.com/p/115834422)
+   + [在虚拟机上搭建自己的 git 服务器并创建 git 仓库](https://blog.csdn.net/TomorrowAndTuture/article/details/108611882)

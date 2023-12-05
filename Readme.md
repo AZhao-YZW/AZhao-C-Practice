@@ -9,3 +9,7 @@
 ### practice_3
 通讯协议解析不同类型命令？
 值参数化测试？
+
+### practice_4
+Makefile进阶
+$@ $^ $<
