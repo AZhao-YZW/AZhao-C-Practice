@@ -35,3 +35,5 @@
    + [Linux命令学习手册-objcopy](https://zhuanlan.zhihu.com/p/115834422)
    + [在虚拟机上搭建自己的 git 服务器并创建 git 仓库](https://blog.csdn.net/TomorrowAndTuture/article/details/108611882)
    + [[Linux] 修改PS1环境变量让shell只显示最后一个目录名而不显示完整的路径](https://blog.csdn.net/weixin_42482896/article/details/107564740)
+   + [Git 如何使用一条命令来获取Git根目录](https://geek-docs.com/git/git-questions/267_git_is_there_a_way_to_get_the_git_root_directory_in_one_command.html)
+3. git中修改未提交的两种状态：`not staged`是曾被某次commit提交过，而`untrack`是未被跟踪过的文件
