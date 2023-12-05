@@ -18,7 +18,7 @@ OLED_MOCK_FUNC := oled_show_text oled_show_picture
 AUDIO_CORE_MOCK_FUNC := audio_general_action
 WIFI_MOCK_FUNC := wifi_connect wifi_disconnect
 
-mkdir -p $(OUTPUT_PATH)
+$(shell mkdir -p $(OUTPUT_PATH))
 
 .PHONY: clean
 

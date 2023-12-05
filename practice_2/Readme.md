@@ -34,3 +34,4 @@
    + [Git之删除本地无用分支](https://blog.csdn.net/qq_35448165/article/details/107335358)
    + [Linux命令学习手册-objcopy](https://zhuanlan.zhihu.com/p/115834422)
    + [在虚拟机上搭建自己的 git 服务器并创建 git 仓库](https://blog.csdn.net/TomorrowAndTuture/article/details/108611882)
+   + [[Linux] 修改PS1环境变量让shell只显示最后一个目录名而不显示完整的路径](https://blog.csdn.net/weixin_42482896/article/details/107564740)
