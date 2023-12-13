@@ -1,7 +1,7 @@
 #include "audio_core.h"
 #include <stdio.h>
 
-static void audio_general_action(char *op)
+void audio_general_action(char *op)
 {
     printf("%s\n", op);
 }
